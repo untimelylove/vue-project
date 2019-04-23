@@ -13,6 +13,20 @@ Vue.config.productionTip = false
 axios.defaults.baseURL = 'http://127.0.0.1:11333/api/private/v1/'
 // ? 把阿贾克斯配置给VUE
 Vue.prototype.$http = axios
+
+axios.interceptors.request.use(function (config) {
+  // config : axios的配置对象，计提时axios大对象内部的自己成员
+  // console.dir(axios)
+  // console.dir(config)
+  // ? 此刻的config参数约等于axios里面的defaults对象
+  // ? 把token绑定在到axios的身上（要通过请求头的方式携带token）
+  var token = window.sessionStorage.getItem('token')
+  config.headers.Authorization = token
+  return config;
+}, function (error) {
+  // Do something with request error
+  return Promise.reject(error);
+});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
