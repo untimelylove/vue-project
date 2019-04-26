@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import login from '@/components/login'
 import home from '@/components/home'
 import backstageHome from '@/components/default' 
+import user from '@/components/user' 
 Vue.use(Router)
 const router = new Router({
   routes: [{
@@ -18,10 +19,10 @@ const router = new Router({
       path: '/home',
       component: home,
       redirect:'/backstageHome',
-      children:[{
-        path: '/backstageHome',
-        component: backstageHome
-      }]
+      children:[
+        {path: '/backstageHome',component: backstageHome},
+        {path: '/users',component: user}
+      ]
     },
   ]
 })

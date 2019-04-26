@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside :style="{width:show?'65px':'200px'}">
+    <el-aside :style="{ width:show?'65px':'200px'}">
       <div>
         <img src="../assets/img/user.jpg" alt>
       </div>
@@ -13,6 +13,7 @@
           :unique-opened="true"
           :collapse="show"
           :collapse-transition="false"
+          :router="true"
         >
           <!-- // ? 人家组件要求index的值是字符串 -->
           <el-submenu
@@ -28,7 +29,7 @@
             <el-menu-item-group>
               <!-- // ? 这里的 itemS in item.children 是二级嵌套 能够使用一级里面的数据-->
               <el-menu-item
-                :index="item.id+'-'+itemS.id"
+                :index="itemS.path"
                 v-for="itemS in item.children"
                 :key="itemS.id"
               >
@@ -59,7 +60,11 @@
 export default {
     created() {
         this.getmenulist()
+        // this.outhome()
     },
+    // mounted() {
+      
+    // },
     data() {
         return {
             show: false,
@@ -70,8 +75,11 @@ export default {
     },
     methods: {
         async getmenulist() {
-            const { data: dt } = await this.$http.get('/menus')
-            console.log(dt)
+            const { data: dt } = await this.$http.get('menus')
+            // console.log(dt)
+            if(dt.meta.status !== 200){
+              return this.$message.error(dt.meta.status)
+            }
             this.menulist = dt.data
         },
         outhome() {
@@ -152,6 +160,9 @@ export default {
         .left-menu {
             margin-top: 20px;
         }
+    }
+    .el-main {
+      background-color: #FAFAFA;
     }
 }
 </style>
