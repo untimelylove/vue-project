@@ -1,11 +1,16 @@
 <template>
-    <div>
-        默认显示组件
-    </div>
+  <div>
+    <el-calendar v-model="value"></el-calendar>
+  </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      value: new Date()
+    }
+  }
 }
 </script>
 

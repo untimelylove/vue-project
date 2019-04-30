@@ -5,6 +5,7 @@ import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 import ElementUI from 'element-ui'
 import axios from 'axios'
+import crumbs from './components/SubComponents/Crumbs.vue'
 // ? 注册全部的组件方法，到了后期上线再按需引入,css已经配置好了按需引入
 Vue.use(ElementUI)
 
@@ -28,6 +29,8 @@ axios.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 /* eslint-disable no-new */
+// 注册公共面包屑组件为vue实例
+Vue.component("com-crub",crumbs)
 new Vue({
   el: '#app',
   router,
