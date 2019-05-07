@@ -6,6 +6,10 @@ import backstageHome from '@/components/default'
 import user from '@/components/user'
 import rights from '@/components/rights'
 import role from '@/components/role.vue'
+import cat from '@/components/cat.vue'
+import param from '@/components/param.vue'
+import goods from '@/components/Goods.vue'
+import goodsadd from '@/components/goodsadd.vue'
 Vue.use(Router)
 const router = new Router({
   routes: [{
@@ -26,6 +30,10 @@ const router = new Router({
         {path: '/users',component: user},
         {path: '/rights',component: rights},
         {path: '/roles',component: role},
+        {path: '/categories',component: cat},
+        {path: '/params',component: param},
+        {path: '/goods',component: goods},
+        {path: '/goodsadd',component: goodsadd},
       ]
     },
   ]

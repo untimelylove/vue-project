@@ -2,7 +2,7 @@
   <div>
     <com-crub keyword="权限"></com-crub>
     <el-card shadow="always" class="card-box">
-      <el-table style="width: 100%" border sripe :data="rightsList">
+      <el-table style="width: 100%" border stripe :data="rightsList">
         <el-table-column type="index" label="序号"></el-table-column>
         <el-table-column prop="authName" label="权限名称"></el-table-column>
         <el-table-column prop="path" label="路径"></el-table-column>
